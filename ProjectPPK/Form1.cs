@@ -77,11 +77,10 @@ namespace ProjectPPK
             invoice.Text += "ID Tamu        : " + id + "\n";
             invoice.Text += "Nama           : " + nama + "\n";
             invoice.Text += "Alamat         : " + alamat + "\n";
-            invoice.Text += "Nomor telpon   : " + alamat + "\n";
-            invoice.Text += "Jumlah kamar   : " + alamat + " kamar" + "\n";
-            invoice.Text += "Jumlah hari    : " + alamat + " hari" + "\n";
+            invoice.Text += "Nomor telpon   : " + no_telp + "\n";
+            invoice.Text += "Jumlah kamar   : " + jumkamar + " kamar" + "\n";
+            invoice.Text += "Jumlah hari    : " + jumhari + " hari" + "\n";
             invoice.Text += "Jenis kamar    : " + jenis_kamar + "\n";
-            invoice.Text += "Alamat         : " + alamat + "\n";
             invoice.Text += "=========================================================" + "\n";
             invoice.Text += "Harga kamar    : Rp " + harga_kamar + "\n";
             if (printDialog1.ShowDialog() == DialogResult.OK)
@@ -133,14 +132,12 @@ namespace ProjectPPK
             insertData(id,nama,alamat,no_telp,jumkamar,jumhari,jenis_kamar);
             lblHargaK.Text = "" + harga_kamar;
             //melakukan reset / mengosongkan form
-            /**
             tbNomorIdentitasK.Text = "";
             tbNamaK.Text = "";
             tbAlamatK.Text = "";
             tbNomorPonselK.Text = "";
             nudJumlahKamarK.Value = 0;
             nudJumlahHariK.Value = 0;
-            **/
         }
         private void rbStandardK_CheckedChanged(object sender, EventArgs e)
         {
