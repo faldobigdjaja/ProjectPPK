@@ -153,6 +153,7 @@
             this.btnSaveK.TabIndex = 4;
             this.btnSaveK.Text = "Save";
             this.btnSaveK.UseVisualStyleBackColor = true;
+            this.btnSaveK.Click += new System.EventHandler(this.btnSaveK_Click);
             // 
             // btnCheckOutK
             // 
@@ -242,6 +243,7 @@
             this.rbStandardK.TabStop = true;
             this.rbStandardK.Text = "Standard";
             this.rbStandardK.UseVisualStyleBackColor = true;
+            this.rbStandardK.CheckedChanged += new System.EventHandler(this.rbStandardK_CheckedChanged);
             // 
             // rbDeluxeK
             // 
@@ -254,6 +256,7 @@
             this.rbDeluxeK.TabStop = true;
             this.rbDeluxeK.Text = "Deluxe";
             this.rbDeluxeK.UseVisualStyleBackColor = true;
+            this.rbDeluxeK.CheckedChanged += new System.EventHandler(this.rbStandardK_CheckedChanged);
             // 
             // rbSuiteK
             // 
@@ -266,6 +269,7 @@
             this.rbSuiteK.TabStop = true;
             this.rbSuiteK.Text = "Suite";
             this.rbSuiteK.UseVisualStyleBackColor = true;
+            this.rbSuiteK.CheckedChanged += new System.EventHandler(this.rbStandardK_CheckedChanged);
             // 
             // nudJumlahKamarK
             // 
@@ -641,11 +645,11 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 559);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 562);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(876, 306);
+            this.dataGridView1.Size = new System.Drawing.Size(876, 303);
             this.dataGridView1.TabIndex = 2;
             // 
             // formReservasi
