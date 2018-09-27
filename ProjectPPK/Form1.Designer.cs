@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpReservasiKamar = new System.Windows.Forms.TabPage();
+            this.bTampildataK = new System.Windows.Forms.Button();
             this.btnSaveK = new System.Windows.Forms.Button();
             this.btnCheckOutK = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -54,6 +55,7 @@
             this.lblHargaK = new System.Windows.Forms.Label();
             this.lblBiayaK = new System.Windows.Forms.Label();
             this.tpReservasiRestoran = new System.Windows.Forms.TabPage();
+            this.bTampildataR = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnPrintR = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -77,8 +79,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.bTampildataK = new System.Windows.Forms.Button();
-            this.bTampildataR = new System.Windows.Forms.Button();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.tabControl1.SuspendLayout();
             this.tpReservasiKamar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahHariK)).BeginInit();
@@ -134,6 +136,17 @@
             this.tpReservasiKamar.Size = new System.Drawing.Size(868, 529);
             this.tpReservasiKamar.TabIndex = 0;
             this.tpReservasiKamar.Text = "Reservasi Kamar";
+            // 
+            // bTampildataK
+            // 
+            this.bTampildataK.Location = new System.Drawing.Point(306, 403);
+            this.bTampildataK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bTampildataK.Name = "bTampildataK";
+            this.bTampildataK.Size = new System.Drawing.Size(140, 37);
+            this.bTampildataK.TabIndex = 43;
+            this.bTampildataK.Text = "Tampilkan data";
+            this.bTampildataK.UseVisualStyleBackColor = true;
+            this.bTampildataK.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnSaveK
             // 
@@ -344,6 +357,7 @@
             this.btnPrintK.TabIndex = 3;
             this.btnPrintK.Text = "Print";
             this.btnPrintK.UseVisualStyleBackColor = true;
+            this.btnPrintK.Click += new System.EventHandler(this.btnPrintK_Click);
             // 
             // lblRpK
             // 
@@ -406,6 +420,16 @@
             this.tpReservasiRestoran.Size = new System.Drawing.Size(868, 529);
             this.tpReservasiRestoran.TabIndex = 1;
             this.tpReservasiRestoran.Text = "Reservasi Restoran";
+            // 
+            // bTampildataR
+            // 
+            this.bTampildataR.Location = new System.Drawing.Point(271, 422);
+            this.bTampildataR.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bTampildataR.Name = "bTampildataR";
+            this.bTampildataR.Size = new System.Drawing.Size(159, 46);
+            this.bTampildataR.TabIndex = 44;
+            this.bTampildataR.Text = "Tampilkan data";
+            this.bTampildataR.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -645,26 +669,10 @@
             this.dataGridView1.Size = new System.Drawing.Size(876, 303);
             this.dataGridView1.TabIndex = 2;
             // 
-            // bTampildataK
+            // printDialog1
             // 
-            this.bTampildataK.Location = new System.Drawing.Point(306, 403);
-            this.bTampildataK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bTampildataK.Name = "bTampildataK";
-            this.bTampildataK.Size = new System.Drawing.Size(140, 37);
-            this.bTampildataK.TabIndex = 43;
-            this.bTampildataK.Text = "Tampilkan data";
-            this.bTampildataK.UseVisualStyleBackColor = true;
-            this.bTampildataK.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // bTampildataR
-            // 
-            this.bTampildataR.Location = new System.Drawing.Point(271, 422);
-            this.bTampildataR.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bTampildataR.Name = "bTampildataR";
-            this.bTampildataR.Size = new System.Drawing.Size(159, 46);
-            this.bTampildataR.TabIndex = 44;
-            this.bTampildataR.Text = "Tampilkan data";
-            this.bTampildataR.UseVisualStyleBackColor = true;
+            this.printDialog1.Document = this.printDocument1;
+            this.printDialog1.UseEXDialog = true;
             // 
             // formReservasi
             // 
@@ -749,6 +757,8 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button bTampildataK;
         private System.Windows.Forms.Button bTampildataR;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }
 

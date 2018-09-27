@@ -15,11 +15,31 @@ namespace ProjectPPK
         MySqlDataAdapter mySqlDataAdapter;
         private string id,nama, alamat, no_telp, jenis_kamar;
         private int jumkamar, jumhari,harga_kamar;
+        private RichTextBox invoice;
         static string connectionInfo = "datasource=localhost;port=3306;username=root;password=katasandi;database=hotel;SslMode=none";
         MySqlConnection connect = new MySqlConnection(connectionInfo);
         public formReservasi()
         {
             InitializeComponent();
+            printDocument1.BeginPrint += beginPrint;
+            printDocument1.PrintPage += printPage;
+        }
+        private int charFrom;
+        private void beginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            charFrom = 0;
+        }
+        private void printPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            try
+            {
+                e.HasMorePages = RichTextBoxPrinter.Print(invoice, ref charFrom, e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Print error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = true;
+            }
         }
         private void formReservasi_Load(object sender, EventArgs e)
         {
@@ -46,6 +66,27 @@ namespace ProjectPPK
         private void button1_Click(object sender, EventArgs e)
         {
             loadData_Room();
+        }
+
+        private void btnPrintK_Click(object sender, EventArgs e)
+        {
+            invoice = new RichTextBox();
+            invoice.Text += "Hotel Inn";
+            invoice.Text += "=========================================================";
+            invoice.Text += "ID Tamu        : " + id + "\n";
+            invoice.Text += "Nama           : " + nama + "\n";
+            invoice.Text += "Alamat         : " + alamat + "\n";
+            invoice.Text += "Nomor telpon   : " + alamat + "\n";
+            invoice.Text += "Jumlah kamar   : " + alamat + " kamar" + "\n";
+            invoice.Text += "Jumlah hari    : " + alamat + " hari" + "\n";
+            invoice.Text += "Jenis kamar    : " + jenis_kamar + "\n";
+            invoice.Text += "Alamat         : " + alamat + "\n";
+            invoice.Text += "=========================================================";
+            invoice.Text += "Harga kamar    : Rp " + harga_kamar + "\n";
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                printDocument1.Print();
+            }
         }
 
         private void btnCheckOutK_Click(object sender, EventArgs e)
