@@ -130,6 +130,24 @@ namespace ProjectPPK
             loadData_Restaurant();
         }
 
+        private void bHapusdataR_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                connect.Open();
+                MySqlCommand command = new MySqlCommand("DELETE FROM reservasi_restoran WHERE no_id = @id", connect);
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Data berhasil dihapus", "Menghapus data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                connect.Close();
+                loadData_Restaurant();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnSaveR_Click(object sender, EventArgs e)
         {
             nama = tbNamaR.Text;
@@ -141,7 +159,6 @@ namespace ProjectPPK
             insertData_Resto(id, nama, alamat, no_telp, jumorang, jumhari, jenis_paket);
             lblHargaR.Text = "" + harga_restoran;
             //melakukan reset / mengosongkan form
-            tbNomorIdentitasR.Text = "";
             tbNamaR.Text = "";
             tbAlamatR.Text = "";
             tbNomorPonselR.Text = "";
@@ -157,7 +174,7 @@ namespace ProjectPPK
                 MySqlCommand command = new MySqlCommand("DELETE FROM reservasi_kamar WHERE no_id = @id", connect);
                 command.Parameters.AddWithValue("@id", id);
                 command.ExecuteNonQuery();
-                MessageBox.Show("Data berhasil dihapus, ID : " + id,"Menghapus data",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Data berhasil dihapus","Menghapus data",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 connect.Close();
                 loadData_Room();
             }
@@ -181,6 +198,7 @@ namespace ProjectPPK
                 string jumhari_table = Convert.ToString(selectedRow.Cells["jumlah_hari"].Value);
                 string jeniskamar_table = Convert.ToString(selectedRow.Cells["jenis_kamar"].Value);
                 string hargakamar_table = Convert.ToString(selectedRow.Cells["harga_kamar"].Value);
+                
 
                 nama = nama_table;
                 id = id_table;

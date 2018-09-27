@@ -81,6 +81,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.bHapusdataR = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tpReservasiKamar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahHariK)).BeginInit();
@@ -394,6 +395,7 @@
             // tpReservasiRestoran
             // 
             this.tpReservasiRestoran.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tpReservasiRestoran.Controls.Add(this.bHapusdataR);
             this.tpReservasiRestoran.Controls.Add(this.bTampildataR);
             this.tpReservasiRestoran.Controls.Add(this.panel2);
             this.tpReservasiRestoran.Controls.Add(this.btnSaveR);
@@ -423,10 +425,10 @@
             // 
             // bTampildataR
             // 
-            this.bTampildataR.Location = new System.Drawing.Point(271, 422);
+            this.bTampildataR.Location = new System.Drawing.Point(309, 401);
             this.bTampildataR.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bTampildataR.Name = "bTampildataR";
-            this.bTampildataR.Size = new System.Drawing.Size(159, 46);
+            this.bTampildataR.Size = new System.Drawing.Size(128, 35);
             this.bTampildataR.TabIndex = 44;
             this.bTampildataR.Text = "Tampilkan data";
             this.bTampildataR.UseVisualStyleBackColor = true;
@@ -680,6 +682,17 @@
             this.printDialog1.Document = this.printDocument1;
             this.printDialog1.UseEXDialog = true;
             // 
+            // bHapusdataR
+            // 
+            this.bHapusdataR.Location = new System.Drawing.Point(309, 456);
+            this.bHapusdataR.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bHapusdataR.Name = "bHapusdataR";
+            this.bHapusdataR.Size = new System.Drawing.Size(128, 35);
+            this.bHapusdataR.TabIndex = 45;
+            this.bHapusdataR.Text = "Hapus data";
+            this.bHapusdataR.UseVisualStyleBackColor = true;
+            this.bHapusdataR.Click += new System.EventHandler(this.bHapusdataR_Click);
+            // 
             // formReservasi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -765,6 +778,7 @@
         private System.Windows.Forms.Button bTampildataR;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.Button bHapusdataR;
     }
 }
 
