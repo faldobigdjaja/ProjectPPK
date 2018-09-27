@@ -12,8 +12,8 @@ namespace ProjectPPK
 {
     public partial class formKonfirmasi : Form
     {
-        private bool disimpan;
-        public Boolean Konfirmasi
+        private string disimpan = "";
+        public String Konfirmasi
         {
             get
             {
@@ -27,12 +27,12 @@ namespace ProjectPPK
 
         private void btnYa_Click(object sender, EventArgs e)
         {
-            disimpan = true;
+            disimpan = "ya";
         }
 
         private void btnTidak_Click(object sender, EventArgs e)
         {
-            disimpan = false;
+            disimpan = "tidak";
         }
     }
 }

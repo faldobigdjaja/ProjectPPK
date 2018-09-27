@@ -30,7 +30,6 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpReservasiKamar = new System.Windows.Forms.TabPage();
-            this.btnCheckInK = new System.Windows.Forms.Button();
             this.btnSaveK = new System.Windows.Forms.Button();
             this.btnCheckOutK = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -78,6 +77,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.bTampildataK = new System.Windows.Forms.Button();
+            this.bTampildataR = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tpReservasiKamar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahHariK)).BeginInit();
@@ -106,7 +107,7 @@
             // 
             this.tpReservasiKamar.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tpReservasiKamar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tpReservasiKamar.Controls.Add(this.btnCheckInK);
+            this.tpReservasiKamar.Controls.Add(this.bTampildataK);
             this.tpReservasiKamar.Controls.Add(this.btnSaveK);
             this.tpReservasiKamar.Controls.Add(this.btnCheckOutK);
             this.tpReservasiKamar.Controls.Add(this.label7);
@@ -134,19 +135,9 @@
             this.tpReservasiKamar.TabIndex = 0;
             this.tpReservasiKamar.Text = "Reservasi Kamar";
             // 
-            // btnCheckInK
-            // 
-            this.btnCheckInK.Location = new System.Drawing.Point(333, 389);
-            this.btnCheckInK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnCheckInK.Name = "btnCheckInK";
-            this.btnCheckInK.Size = new System.Drawing.Size(110, 32);
-            this.btnCheckInK.TabIndex = 21;
-            this.btnCheckInK.Text = "Check In";
-            this.btnCheckInK.UseVisualStyleBackColor = true;
-            // 
             // btnSaveK
             // 
-            this.btnSaveK.Location = new System.Drawing.Point(51, 423);
+            this.btnSaveK.Location = new System.Drawing.Point(20, 422);
             this.btnSaveK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSaveK.Name = "btnSaveK";
             this.btnSaveK.Size = new System.Drawing.Size(147, 46);
@@ -157,13 +148,14 @@
             // 
             // btnCheckOutK
             // 
-            this.btnCheckOutK.Location = new System.Drawing.Point(333, 460);
+            this.btnCheckOutK.Location = new System.Drawing.Point(306, 469);
             this.btnCheckOutK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCheckOutK.Name = "btnCheckOutK";
-            this.btnCheckOutK.Size = new System.Drawing.Size(110, 32);
+            this.btnCheckOutK.Size = new System.Drawing.Size(140, 32);
             this.btnCheckOutK.TabIndex = 5;
             this.btnCheckOutK.Text = "Check Out";
             this.btnCheckOutK.UseVisualStyleBackColor = true;
+            this.btnCheckOutK.Click += new System.EventHandler(this.btnCheckOutK_Click);
             // 
             // label7
             // 
@@ -388,6 +380,7 @@
             // tpReservasiRestoran
             // 
             this.tpReservasiRestoran.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tpReservasiRestoran.Controls.Add(this.bTampildataR);
             this.tpReservasiRestoran.Controls.Add(this.panel2);
             this.tpReservasiRestoran.Controls.Add(this.btnSaveR);
             this.tpReservasiRestoran.Controls.Add(this.label8);
@@ -474,7 +467,7 @@
             // 
             // btnSaveR
             // 
-            this.btnSaveR.Location = new System.Drawing.Point(54, 423);
+            this.btnSaveR.Location = new System.Drawing.Point(24, 423);
             this.btnSaveR.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSaveR.Name = "btnSaveR";
             this.btnSaveR.Size = new System.Drawing.Size(147, 46);
@@ -652,6 +645,27 @@
             this.dataGridView1.Size = new System.Drawing.Size(876, 303);
             this.dataGridView1.TabIndex = 2;
             // 
+            // bTampildataK
+            // 
+            this.bTampildataK.Location = new System.Drawing.Point(306, 403);
+            this.bTampildataK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bTampildataK.Name = "bTampildataK";
+            this.bTampildataK.Size = new System.Drawing.Size(140, 37);
+            this.bTampildataK.TabIndex = 43;
+            this.bTampildataK.Text = "Tampilkan data";
+            this.bTampildataK.UseVisualStyleBackColor = true;
+            this.bTampildataK.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // bTampildataR
+            // 
+            this.bTampildataR.Location = new System.Drawing.Point(271, 422);
+            this.bTampildataR.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bTampildataR.Name = "bTampildataR";
+            this.bTampildataR.Size = new System.Drawing.Size(159, 46);
+            this.bTampildataR.TabIndex = 44;
+            this.bTampildataR.Text = "Tampilkan data";
+            this.bTampildataR.UseVisualStyleBackColor = true;
+            // 
             // formReservasi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -686,7 +700,6 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tpReservasiKamar;
-        private System.Windows.Forms.Button btnCheckInK;
         private System.Windows.Forms.Button btnSaveK;
         private System.Windows.Forms.Button btnCheckOutK;
         private System.Windows.Forms.Label label7;
@@ -734,6 +747,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button bTampildataK;
+        private System.Windows.Forms.Button bTampildataR;
     }
 }
 

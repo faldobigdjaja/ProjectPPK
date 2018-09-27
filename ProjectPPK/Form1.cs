@@ -12,25 +12,73 @@ namespace ProjectPPK
 {
     public partial class formReservasi : Form
     {
-        private formKonfirmasi Confirm;
-        private formKonfirmasiB FormBenar;
-        private formKonfirmasiS FormSalah;
-        private formKesalahan FormError;
         MySqlDataAdapter mySqlDataAdapter;
         private string id,nama, alamat, no_telp, jenis_kamar;
         private int jumkamar, jumhari,harga_kamar;
         static string connectionInfo = "datasource=localhost;port=3306;username=root;password=katasandi;database=hotel;SslMode=none";
         MySqlConnection connect = new MySqlConnection(connectionInfo);
-
-        
-
         public formReservasi()
         {
             InitializeComponent();
-            Confirm = new formKonfirmasi();
-            FormBenar = new formKonfirmasiB();
-            FormSalah = new formKonfirmasiS();
         }
+        private void formReservasi_Load(object sender, EventArgs e)
+        {
+            loadData_Room();
+        }
+        private void loadData_Room()
+        {
+            string query = "SELECT * FROM reservasi_kamar";
+            try
+            {
+                connect.Open();
+                mySqlDataAdapter = new MySqlDataAdapter(query, connectionInfo);
+                DataTable dataTable = new DataTable();
+                mySqlDataAdapter.Fill(dataTable);
+                dataGridView1.DataSource = dataTable;
+                connect.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            loadData_Room();
+        }
+
+        private void btnCheckOutK_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                connect.Open();
+                MySqlCommand command = new MySqlCommand("DELETE FROM reservasi_kamar WHERE no_id = @id", connect);
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Data berhasil dihapus");
+                connect.Close();
+                loadData_Room();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+
+                string id_table = Convert.ToString(selectedRow.Cells["no_id"].Value);
+
+                id = id_table;
+            }
+        }
+
         private void btnSaveK_Click(object sender, EventArgs e)
         {
             id = tbNomorIdentitasK.Text;
@@ -39,26 +87,8 @@ namespace ProjectPPK
             no_telp = tbNomorPonselK.Text;
             jumkamar = Convert.ToInt32(nudJumlahKamarK.Value);
             jumhari = Convert.ToInt32(nudJumlahHariK.Value);
-            Confirm.Show();
-            if(Confirm.Konfirmasi)
-            {
-                Confirm.Hide();
-                insertData(id,nama,alamat,no_telp,jumkamar,jumhari,jenis_kamar);
-                lblHargaK.Text = "" + harga_kamar;
-                FormBenar.Show();
-                if(FormBenar.Konfirmasi)
-                {
-                    FormBenar.Hide();
-                }
-            } else
-            {
-                Confirm.Hide();
-                FormSalah.Show();
-                if(FormSalah.Konfirmasi)
-                {
-                    FormSalah.Hide();
-                }
-            }
+            insertData(id,nama,alamat,no_telp,jumkamar,jumhari,jenis_kamar);
+            lblHargaK.Text = "" + harga_kamar;
         }
         private void rbStandardK_CheckedChanged(object sender, EventArgs e)
         {
@@ -96,42 +126,14 @@ namespace ProjectPPK
                 command.Parameters.AddWithValue("@harga_kamar", harga_kamar);
                 command.ExecuteNonQuery();
                 connect.Close();
+                MessageBox.Show("Data berhasil ditambahkan");
             } catch(Exception ex)
             {
-                FormError = new formKesalahan(ex.Message);
-                FormError.Show();
-                if(FormError.Konfirmasi)
-                {
-                    FormError.Hide();
-                }
+                MessageBox.Show(ex.Message);
             }
         }
-        private void loadData_Room()
-        {
-            string query = "SELECT * FROM reservasi_kamar"; 
-            try
-            {
-                connect.Open();
-                mySqlDataAdapter = new MySqlDataAdapter(query, connectionInfo);
-                DataTable dataTable = new DataTable();
-                mySqlDataAdapter.Fill(dataTable);
-                dataGridView1.DataSource = dataTable;
-                connect.Close();
-            }
-            catch (Exception ex)
-            {
-                FormError = new formKesalahan(ex.Message);
-                FormError.Show();
-                if (FormError.Konfirmasi)
-                {
-                    FormError.Hide();
-                }
-            }
-        }
-        private void formReservasi_Load(object sender, EventArgs e)
-        {
-            loadData_Room();
-        }
+        
+        
         private int hitungKamar(int jumkmr, int jumhari, string jenis)
         {
             int harga = 0;
