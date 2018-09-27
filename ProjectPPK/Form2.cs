@@ -20,9 +20,10 @@ namespace ProjectPPK
                 return disimpan;
             }
         }
-        public formKesalahan()
+        public formKesalahan(string err)
         {
             InitializeComponent();
+            label2.Text += err;
         }
 
         private void btnOke_Click(object sender, EventArgs e)
