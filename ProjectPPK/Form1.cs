@@ -113,10 +113,23 @@ namespace ProjectPPK
                 int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
 
                 DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
-
+                string nama_table = Convert.ToString(selectedRow.Cells["nama"].Value);
                 string id_table = Convert.ToString(selectedRow.Cells["no_id"].Value);
+                string alamat_table = Convert.ToString(selectedRow.Cells["alamat"].Value);
+                string notelp_table = Convert.ToString(selectedRow.Cells["no_telp"].Value);
+                string jumkamar_table = Convert.ToString(selectedRow.Cells["jumlah_kamar"].Value);
+                string jumhari_table = Convert.ToString(selectedRow.Cells["jumlah_hari"].Value);
+                string jeniskamar_table = Convert.ToString(selectedRow.Cells["jenis_kamar"].Value);
+                string hargakamar_table = Convert.ToString(selectedRow.Cells["harga_kamar"].Value);
 
+                nama = nama_table;
                 id = id_table;
+                alamat = alamat_table;
+                no_telp = notelp_table;
+                jumkamar = Convert.ToInt32(jumkamar_table);
+                jumhari = Convert.ToInt32(jumhari_table);
+                jenis_kamar = jeniskamar_table;
+                harga_kamar = Convert.ToInt32(hargakamar_table);
 
             }
         }
