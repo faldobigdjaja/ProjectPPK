@@ -89,6 +89,13 @@ namespace ProjectPPK
             jumhari = Convert.ToInt32(nudJumlahHariK.Value);
             insertData(id,nama,alamat,no_telp,jumkamar,jumhari,jenis_kamar);
             lblHargaK.Text = "" + harga_kamar;
+            //melakukan reset / mengosongkan form
+            tbNomorIdentitasK.Text = "";
+            tbNamaK.Text = "";
+            tbAlamatK.Text = "";
+            tbNomorPonselK.Text = "";
+            nudJumlahKamarK.Value = 0;
+            nudJumlahHariK.Value = 0;
         }
         private void rbStandardK_CheckedChanged(object sender, EventArgs e)
         {
