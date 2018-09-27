@@ -17,10 +17,13 @@ namespace ProjectPPK
         private formKonfirmasiS FormSalah;
         private formKesalahan FormError;
         MySqlDataAdapter mySqlDataAdapter;
-        private string nama, alamat, no_ponsel, jenis_kamar;
-        private int id,jumkamar, jumhari;
-        static string connectionInfo = "datasource=localhost;port=3306;username=root;password=katasandi;database=coba;SslMode=none";
+        private string id,nama, alamat, no_telp, jenis_kamar;
+        private int jumkamar, jumhari,harga_kamar;
+        static string connectionInfo = "datasource=localhost;port=3306;username=root;password=katasandi;database=hotel;SslMode=none";
         MySqlConnection connect = new MySqlConnection(connectionInfo);
+
+        
+
         public formReservasi()
         {
             InitializeComponent();
@@ -30,17 +33,17 @@ namespace ProjectPPK
         }
         private void btnSaveK_Click(object sender, EventArgs e)
         {
-            id = Convert.ToInt32(tbNomorIdentitasK.Text);
+            id = tbNomorIdentitasK.Text;
             nama = tbNamaK.Text;
             alamat = tbAlamatK.Text;
-            no_ponsel = tbNomorPonselK.Text;
+            no_telp = tbNomorPonselK.Text;
             jumkamar = Convert.ToInt32(nudJumlahKamarK.Value);
             jumhari = Convert.ToInt32(nudJumlahHariK.Value);
             Confirm.Show();
             if(Confirm.Konfirmasi)
             {
                 Confirm.Hide();
-                insertData(id,nama,alamat,no_ponsel,jumkamar,jumhari,jenis_kamar);
+                insertData(id,nama,alamat,no_telp,jumkamar,jumhari,jenis_kamar);
                 FormBenar.Show();
                 if(FormBenar.Konfirmasi)
                 {
@@ -74,21 +77,22 @@ namespace ProjectPPK
                     break;
             }
         }
-        private void insertData(int id, string nama, string alamat, string no_ponsel, int jum_kamar
+        private void insertData(string id, string nama, string alamat, string no_ponsel, int jum_kamar
             , int jum_hari, string jenis_kamar)
         {
             try
             {
                 connect.Open();
-                MySqlCommand command = new MySqlCommand("INSERT INTO tamu_kamar VALUES(@id_tamuk,@nama,@alamat,@nomor_ponsel,@jumlah_kamar,@jumlah_hari,@jenis_kamar,@status)", connect);
-                command.Parameters.AddWithValue("@id_tamuk", id);
+                MySqlCommand command = new MySqlCommand("INSERT INTO reservasi_kamar VALUES(@nama,@id,@alamat,@nomor_ponsel,@jumlah_kamar,@jumlah_hari,@jenis_kamar,@harga_kamar)", connect);
+                int hasil = hitungKamar(jum_kamar, jum_hari, jenis_kamar);
                 command.Parameters.AddWithValue("@nama", nama);
+                command.Parameters.AddWithValue("@id", id);
                 command.Parameters.AddWithValue("@alamat", alamat);
                 command.Parameters.AddWithValue("@nomor_ponsel", no_ponsel);
                 command.Parameters.AddWithValue("@jumlah_kamar", jum_kamar);
                 command.Parameters.AddWithValue("@jumlah_hari", jum_hari);
                 command.Parameters.AddWithValue("@jenis_kamar",jenis_kamar);
-                command.Parameters.AddWithValue("@status", "Checked In");
+                command.Parameters.AddWithValue("@harga_kamar", hasil);
                 command.ExecuteNonQuery();
                 connect.Close();
             } catch(Exception ex)
@@ -103,7 +107,7 @@ namespace ProjectPPK
         }
         private void loadData_Room()
         {
-            string query = "SELECT * FROM user"; //TODO : SELECT query must be changed
+            string query = "SELECT * FROM reservasi_kamar"; //TODO : SELECT query must be changed
             try
             {
                 connect.Open();
@@ -122,6 +126,28 @@ namespace ProjectPPK
                     FormError.Hide();
                 }
             }
+        }
+        private void formReservasi_Load(object sender, EventArgs e)
+        {
+            loadData_Room();
+        }
+        private int hitungKamar(int jumkmr, int jumhari, string jenis)
+        {
+            int harga = 0;
+                
+            switch(jenis)
+            {
+                case "Standard":
+                    harga = (jumkmr * 750000) * jumhari;
+                    break;
+                case "Deluxe":
+                    harga = (jumkmr * 1500000) * jumhari;
+                    break;
+                case "Suite":
+                    harga = (jumkmr * 3000000) * jumhari;
+                    break;
+            }
+            return harga;
         }
     }
 }
