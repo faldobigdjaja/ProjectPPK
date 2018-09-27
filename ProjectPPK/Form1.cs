@@ -24,23 +24,6 @@ namespace ProjectPPK
             printDocument1.BeginPrint += beginPrint;
             printDocument1.PrintPage += printPage;
         }
-        private int charFrom;
-        private void beginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
-        {
-            charFrom = 0;
-        }
-        private void printPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            try
-            {
-                e.HasMorePages = RichTextBoxPrinter.Print(invoice, ref charFrom, e);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Print error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                e.Cancel = true;
-            }
-        }
         private void formReservasi_Load(object sender, EventArgs e)
         {
             loadData_Room();
@@ -62,7 +45,23 @@ namespace ProjectPPK
                 MessageBox.Show(ex.Message);
             }
         }
-
+        private int charFrom;
+        private void beginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            charFrom = 0;
+        }
+        private void printPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            try
+            {
+                e.HasMorePages = RichTextBoxPrinter.Print(invoice, ref charFrom, e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Print error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = true;
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             loadData_Room();
@@ -71,8 +70,10 @@ namespace ProjectPPK
         private void btnPrintK_Click(object sender, EventArgs e)
         {
             invoice = new RichTextBox();
-            invoice.Text += "Hotel Inn";
-            invoice.Text += "=========================================================";
+            invoice.SelectAll();
+            invoice.SelectionFont = new Font("Verdana",18, FontStyle.Regular);
+            invoice.Text += "Hotel Inn" + "\n";
+            invoice.Text += "=========================================================" + "\n";
             invoice.Text += "ID Tamu        : " + id + "\n";
             invoice.Text += "Nama           : " + nama + "\n";
             invoice.Text += "Alamat         : " + alamat + "\n";
@@ -81,7 +82,7 @@ namespace ProjectPPK
             invoice.Text += "Jumlah hari    : " + alamat + " hari" + "\n";
             invoice.Text += "Jenis kamar    : " + jenis_kamar + "\n";
             invoice.Text += "Alamat         : " + alamat + "\n";
-            invoice.Text += "=========================================================";
+            invoice.Text += "=========================================================" + "\n";
             invoice.Text += "Harga kamar    : Rp " + harga_kamar + "\n";
             if (printDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -97,13 +98,13 @@ namespace ProjectPPK
                 MySqlCommand command = new MySqlCommand("DELETE FROM reservasi_kamar WHERE no_id = @id", connect);
                 command.Parameters.AddWithValue("@id", id);
                 command.ExecuteNonQuery();
-                MessageBox.Show("Data berhasil dihapus");
+                MessageBox.Show("Data berhasil dihapus, ID : " + id,"Menghapus data",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 connect.Close();
                 loadData_Room();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -117,6 +118,7 @@ namespace ProjectPPK
                 string id_table = Convert.ToString(selectedRow.Cells["no_id"].Value);
 
                 id = id_table;
+
             }
         }
 
@@ -131,12 +133,14 @@ namespace ProjectPPK
             insertData(id,nama,alamat,no_telp,jumkamar,jumhari,jenis_kamar);
             lblHargaK.Text = "" + harga_kamar;
             //melakukan reset / mengosongkan form
+            /**
             tbNomorIdentitasK.Text = "";
             tbNamaK.Text = "";
             tbAlamatK.Text = "";
             tbNomorPonselK.Text = "";
             nudJumlahKamarK.Value = 0;
             nudJumlahHariK.Value = 0;
+            **/
         }
         private void rbStandardK_CheckedChanged(object sender, EventArgs e)
         {
@@ -174,14 +178,12 @@ namespace ProjectPPK
                 command.Parameters.AddWithValue("@harga_kamar", harga_kamar);
                 command.ExecuteNonQuery();
                 connect.Close();
-                MessageBox.Show("Data berhasil ditambahkan");
+                MessageBox.Show("Data berhasil ditambahkan", "Menyimpan data", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message,"Terjadi kesalahan",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
-        
-        
         private int hitungKamar(int jumkmr, int jumhari, string jenis)
         {
             int harga = 0;
