@@ -430,6 +430,7 @@
             this.bTampildataR.TabIndex = 44;
             this.bTampildataR.Text = "Tampilkan data";
             this.bTampildataR.UseVisualStyleBackColor = true;
+            this.bTampildataR.Click += new System.EventHandler(this.bTampildataR_Click);
             // 
             // panel2
             // 

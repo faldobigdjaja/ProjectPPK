@@ -45,6 +45,23 @@ namespace ProjectPPK
                 MessageBox.Show(ex.Message);
             }
         }
+        private void loadData_Restaurant()
+        {
+            string query = "SELECT * FROM reservasi_restoran";
+            try
+            {
+                connect.Open();
+                mySqlDataAdapter = new MySqlDataAdapter(query, connectionInfo);
+                DataTable dataTable = new DataTable();
+                mySqlDataAdapter.Fill(dataTable);
+                dataGridView1.DataSource = dataTable;
+                connect.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private int charFrom;
         private void beginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
@@ -87,6 +104,11 @@ namespace ProjectPPK
             {
                 printDocument1.Print();
             }
+        }
+
+        private void bTampildataR_Click(object sender, EventArgs e)
+        {
+            loadData_Restaurant();
         }
 
         private void btnCheckOutK_Click(object sender, EventArgs e)
