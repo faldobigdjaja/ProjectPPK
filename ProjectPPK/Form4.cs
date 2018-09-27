@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProjectPPK
 {
-    public partial class formReservasi : Form
+    public partial class formKonfirmasiB : Form
     {
-        public formReservasi()
+        public formKonfirmasiB()
         {
             InitializeComponent();
         }
