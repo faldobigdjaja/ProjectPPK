@@ -13,8 +13,8 @@ namespace ProjectPPK
     public partial class formReservasi : Form
     {
         MySqlDataAdapter mySqlDataAdapter;
-        private string id,nama, alamat, no_telp, jenis_kamar;
-        private int jumkamar, jumhari,harga_kamar;
+        private string id,nama, alamat, no_telp, jenis_kamar,jenis_paket;
+        private int jumkamar, jumhari,harga_kamar,jumorang,harga_restoran;
         private RichTextBox invoice;
         static string connectionInfo = "datasource=localhost;port=3306;username=root;password=katasandi;database=hotel;SslMode=none";
         MySqlConnection connect = new MySqlConnection(connectionInfo);
@@ -106,9 +106,47 @@ namespace ProjectPPK
             }
         }
 
+        private void rbStandardR_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = (RadioButton)sender;
+            switch (rb.Text)
+            {
+                case "Standard":
+                    jenis_paket = "Standard";
+                    break;
+                case "Deluxe":
+                    jenis_paket = "Deluxe";
+                    break;
+                case "Suite":
+                    jenis_paket = "Suite";
+                    break;
+                default:
+                    break;
+            }
+        }
+
         private void bTampildataR_Click(object sender, EventArgs e)
         {
             loadData_Restaurant();
+        }
+
+        private void btnSaveR_Click(object sender, EventArgs e)
+        {
+            nama = tbNamaR.Text;
+            id = tbNomorIdentitasR.Text;
+            alamat = tbAlamatR.Text;
+            no_telp = tbNomorPonselR.Text;
+            jumorang = Convert.ToInt32(nudJumlahOrangR.Value);
+            jumhari = Convert.ToInt32(nudJumlahHariR.Value);
+            insertData_Resto(id, nama, alamat, no_telp, jumorang, jumhari, jenis_paket);
+            lblHargaR.Text = "" + harga_restoran;
+            //melakukan reset / mengosongkan form
+            tbNomorIdentitasR.Text = "";
+            tbNamaR.Text = "";
+            tbAlamatR.Text = "";
+            tbNomorPonselR.Text = "";
+            nudJumlahOrangR.Value = 0;
+            nudJumlahHariR.Value = 0;
         }
 
         private void btnCheckOutK_Click(object sender, EventArgs e)
@@ -216,6 +254,31 @@ namespace ProjectPPK
                 MessageBox.Show(ex.Message,"Terjadi kesalahan",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
+        private void insertData_Resto(string id, string nama, string alamat, string no_ponsel, int jum_orang
+            , int jum_hari, string jenis_paket)
+        {
+            try
+            {
+                connect.Open();
+                MySqlCommand command = new MySqlCommand("INSERT INTO reservasi_restoran VALUES(@nama,@id,@alamat,@nomor_ponsel,@jumlah_orang,@jumlah_hari,@jenis_paket,@harga_restoran)", connect);
+                harga_restoran = hitungRestoran(jum_orang, jum_hari, jenis_paket);
+                command.Parameters.AddWithValue("@nama", nama);
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@alamat", alamat);
+                command.Parameters.AddWithValue("@nomor_ponsel", no_ponsel);
+                command.Parameters.AddWithValue("@jumlah_orang", jum_orang);
+                command.Parameters.AddWithValue("@jumlah_hari", jum_hari);
+                command.Parameters.AddWithValue("@jenis_paket", jenis_paket);
+                command.Parameters.AddWithValue("@harga_restoran", harga_restoran);
+                command.ExecuteNonQuery();
+                connect.Close();
+                MessageBox.Show("Data berhasil ditambahkan", "Menyimpan data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private int hitungKamar(int jumkmr, int jumhari, string jenis)
         {
             int harga = 0;
@@ -230,6 +293,24 @@ namespace ProjectPPK
                     break;
                 case "Suite":
                     harga = (jumkmr * 3000000) * jumhari;
+                    break;
+            }
+            return harga;
+        }
+        private int hitungRestoran(int jumkmr, int jumhari, string jenis)
+        {
+            int harga = 0;
+
+            switch (jenis)
+            {
+                case "Standard":
+                    harga = (jumkmr * 150000) * jumhari;
+                    break;
+                case "Deluxe":
+                    harga = (jumkmr * 300000) * jumhari;
+                    break;
+                case "Suite":
+                    harga = (jumkmr * 1000000) * jumhari;
                     break;
             }
             return harga;

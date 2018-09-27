@@ -499,6 +499,7 @@
             this.btnSaveR.TabIndex = 23;
             this.btnSaveR.Text = "Save";
             this.btnSaveR.UseVisualStyleBackColor = true;
+            this.btnSaveR.Click += new System.EventHandler(this.btnSaveR_Click);
             // 
             // label8
             // 
@@ -578,6 +579,7 @@
             this.rbStandardR.TabStop = true;
             this.rbStandardR.Text = "Standard";
             this.rbStandardR.UseVisualStyleBackColor = true;
+            this.rbStandardR.CheckedChanged += new System.EventHandler(this.rbStandardR_CheckedChanged);
             // 
             // rbDeluxeR
             // 
@@ -590,6 +592,7 @@
             this.rbDeluxeR.TabStop = true;
             this.rbDeluxeR.Text = "Deluxe";
             this.rbDeluxeR.UseVisualStyleBackColor = true;
+            this.rbDeluxeR.CheckedChanged += new System.EventHandler(this.rbStandardR_CheckedChanged);
             // 
             // rbSuiteR
             // 
@@ -602,6 +605,7 @@
             this.rbSuiteR.TabStop = true;
             this.rbSuiteR.Text = "Suite";
             this.rbSuiteR.UseVisualStyleBackColor = true;
+            this.rbSuiteR.CheckedChanged += new System.EventHandler(this.rbStandardR_CheckedChanged);
             // 
             // nudJumlahOrangR
             // 
