@@ -12,9 +12,22 @@ namespace ProjectPPK
 {
     public partial class formKonfirmasiS : Form
     {
+        private bool disimpan;
+        public Boolean Konfirmasi
+        {
+            get
+            {
+                return disimpan;
+            }
+        }
         public formKonfirmasiS()
         {
             InitializeComponent();
+        }
+
+        private void btnOke_Click(object sender, EventArgs e)
+        {
+            disimpan = true;
         }
     }
 }

@@ -368,7 +368,7 @@
             this.lblHargaK.Name = "lblHargaK";
             this.lblHargaK.Size = new System.Drawing.Size(202, 37);
             this.lblHargaK.TabIndex = 1;
-            this.lblHargaK.Text = "999.999.999";
+            this.lblHargaK.Text = "0";
             // 
             // lblBiayaK
             // 
@@ -455,7 +455,7 @@
             this.lblHargaR.Name = "lblHargaR";
             this.lblHargaR.Size = new System.Drawing.Size(202, 37);
             this.lblHargaR.TabIndex = 1;
-            this.lblHargaR.Text = "999.999.999";
+            this.lblHargaR.Text = "0";
             // 
             // label17
             // 

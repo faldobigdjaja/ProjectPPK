@@ -37,51 +37,58 @@
             // 
             // btnYa
             // 
-            this.btnYa.Location = new System.Drawing.Point(68, 101);
+            this.btnYa.Location = new System.Drawing.Point(102, 155);
+            this.btnYa.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnYa.Name = "btnYa";
-            this.btnYa.Size = new System.Drawing.Size(75, 27);
+            this.btnYa.Size = new System.Drawing.Size(112, 42);
             this.btnYa.TabIndex = 8;
             this.btnYa.Text = "Ya";
             this.btnYa.UseVisualStyleBackColor = true;
+            this.btnYa.Click += new System.EventHandler(this.btnYa_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(104, 39);
+            this.label2.Location = new System.Drawing.Point(156, 60);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(251, 24);
+            this.label2.Size = new System.Drawing.Size(382, 32);
             this.label2.TabIndex = 7;
             this.label2.Text = "Apakah data ingin disimpan?";
             // 
             // label1
             // 
             this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
-            this.label1.Location = new System.Drawing.Point(21, 19);
+            this.label1.Location = new System.Drawing.Point(32, 29);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 68);
+            this.label1.Size = new System.Drawing.Size(102, 105);
             this.label1.TabIndex = 6;
             // 
             // btnTidak
             // 
-            this.btnTidak.Location = new System.Drawing.Point(280, 101);
+            this.btnTidak.Location = new System.Drawing.Point(420, 155);
+            this.btnTidak.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnTidak.Name = "btnTidak";
-            this.btnTidak.Size = new System.Drawing.Size(75, 27);
+            this.btnTidak.Size = new System.Drawing.Size(112, 42);
             this.btnTidak.TabIndex = 9;
             this.btnTidak.Text = "Tidak";
             this.btnTidak.UseVisualStyleBackColor = true;
+            this.btnTidak.Click += new System.EventHandler(this.btnTidak_Click);
             // 
             // formKonfirmasi
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(405, 170);
+            this.ClientSize = new System.Drawing.Size(608, 262);
             this.Controls.Add(this.btnTidak);
             this.Controls.Add(this.btnYa);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "formKonfirmasi";
             this.Text = "Konfirmasi";
             this.ResumeLayout(false);
