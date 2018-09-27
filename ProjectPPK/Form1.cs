@@ -44,6 +44,7 @@ namespace ProjectPPK
             {
                 Confirm.Hide();
                 insertData(id,nama,alamat,no_telp,jumkamar,jumhari,jenis_kamar);
+                lblHargaK.Text = "" + harga_kamar;
                 FormBenar.Show();
                 if(FormBenar.Konfirmasi)
                 {
@@ -84,7 +85,7 @@ namespace ProjectPPK
             {
                 connect.Open();
                 MySqlCommand command = new MySqlCommand("INSERT INTO reservasi_kamar VALUES(@nama,@id,@alamat,@nomor_ponsel,@jumlah_kamar,@jumlah_hari,@jenis_kamar,@harga_kamar)", connect);
-                int hasil = hitungKamar(jum_kamar, jum_hari, jenis_kamar);
+                harga_kamar = hitungKamar(jum_kamar, jum_hari, jenis_kamar);
                 command.Parameters.AddWithValue("@nama", nama);
                 command.Parameters.AddWithValue("@id", id);
                 command.Parameters.AddWithValue("@alamat", alamat);
@@ -92,7 +93,7 @@ namespace ProjectPPK
                 command.Parameters.AddWithValue("@jumlah_kamar", jum_kamar);
                 command.Parameters.AddWithValue("@jumlah_hari", jum_hari);
                 command.Parameters.AddWithValue("@jenis_kamar",jenis_kamar);
-                command.Parameters.AddWithValue("@harga_kamar", hasil);
+                command.Parameters.AddWithValue("@harga_kamar", harga_kamar);
                 command.ExecuteNonQuery();
                 connect.Close();
             } catch(Exception ex)
@@ -107,7 +108,7 @@ namespace ProjectPPK
         }
         private void loadData_Room()
         {
-            string query = "SELECT * FROM reservasi_kamar"; //TODO : SELECT query must be changed
+            string query = "SELECT * FROM reservasi_kamar"; 
             try
             {
                 connect.Open();
