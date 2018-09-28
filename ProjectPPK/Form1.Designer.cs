@@ -881,6 +881,7 @@
             this.btnSimpanRu.TabIndex = 47;
             this.btnSimpanRu.Text = "Simpan";
             this.btnSimpanRu.UseVisualStyleBackColor = true;
+            this.btnSimpanRu.Click += new System.EventHandler(this.btnSimpanRu_Click);
             // 
             // label20
             // 

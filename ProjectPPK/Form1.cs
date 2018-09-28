@@ -16,6 +16,7 @@ namespace ProjectPPK
         private string id,nama, alamat, no_telp, jenis_kamar,jenis_paket,keperluan,alamat_tujuan;
         private int jumkamar, jumhari,harga_kamar,jumorang,harga_restoran,jumlah_laundry,harga_ruangan,harga_taxi,harga_laundry;
         private RichTextBox invoice;
+        //konfigurasi database harap dikembalikan ke semula jika setelah diubah dan telah digunakan untuk ujicoba
         static string connectionInfo = "datasource=localhost;port=3306;username=root;password=katasandi;database=hotel;SslMode=none";
         MySqlConnection connect = new MySqlConnection(connectionInfo);
         public formReservasi()
@@ -293,6 +294,19 @@ namespace ProjectPPK
             loadData_Taxi();
         }
 
+        private void btnSimpanRu_Click(object sender, EventArgs e)
+        {
+            nama = tbNamaRu.Text;
+            id = tbNomorIdentitasRu.Text;
+            alamat = tbAlamatRu.Text;
+            no_telp = tbNomorPonselRu.Text;
+            jumorang = Convert.ToInt32(nudJumlahOrangRu.Value);
+            jumhari = Convert.ToInt32(nudJumlahHariRu.Value);
+            keperluan = tbKeperluanRu.Text;
+            //TODO : membuat method untuk memasukkan data ke dalam tabel reservasi_ruangan
+            //mengosongkan form
+        }
+
         private void btnTampilDataL_Click(object sender, EventArgs e)
         {
             loadData_Laundry();
@@ -534,6 +548,10 @@ namespace ProjectPPK
         private int hitungTaksi(int jum_org)
         {
             return jum_org * 12000;
+        }
+        private int hitungRuangan(int jum_org, int jum_hari)
+        {
+            return (jum_org * 25000) * jum_hari;
         }
         private int hitungRestoran(int jumkmr, int jumhari, string jenis)
         {
