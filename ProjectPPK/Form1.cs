@@ -23,6 +23,8 @@ namespace ProjectPPK
             InitializeComponent();
             printDocument1.BeginPrint += beginPrint;
             printDocument1.PrintPage += printPage;
+            printDocument2.BeginPrint += beginPrint;
+            printDocument2.PrintPage += printPage;
         }
         private void formReservasi_Load(object sender, EventArgs e)
         {
@@ -48,6 +50,57 @@ namespace ProjectPPK
         private void loadData_Restaurant()
         {
             string query = "SELECT * FROM reservasi_restoran";
+            try
+            {
+                connect.Open();
+                mySqlDataAdapter = new MySqlDataAdapter(query, connectionInfo);
+                DataTable dataTable = new DataTable();
+                mySqlDataAdapter.Fill(dataTable);
+                dataGridView1.DataSource = dataTable;
+                connect.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void loadData_Rooms()
+        {
+            string query = "SELECT * FROM reservasi_ruangan";
+            try
+            {
+                connect.Open();
+                mySqlDataAdapter = new MySqlDataAdapter(query, connectionInfo);
+                DataTable dataTable = new DataTable();
+                mySqlDataAdapter.Fill(dataTable);
+                dataGridView1.DataSource = dataTable;
+                connect.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void loadData_Taxi()
+        {
+            string query = "SELECT * FROM reservasi_taksi";
+            try
+            {
+                connect.Open();
+                mySqlDataAdapter = new MySqlDataAdapter(query, connectionInfo);
+                DataTable dataTable = new DataTable();
+                mySqlDataAdapter.Fill(dataTable);
+                dataGridView1.DataSource = dataTable;
+                connect.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void loadData_Laundry()
+        {
+            string query = "SELECT * FROM laundry";
             try
             {
                 connect.Open();
@@ -132,6 +185,7 @@ namespace ProjectPPK
 
         private void bHapusdataR_Click(object sender, EventArgs e)
         {
+            id = tbNomorIdentitasR.Text;
             try
             {
                 connect.Open();
@@ -145,6 +199,43 @@ namespace ProjectPPK
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btTampilDataRu_Click(object sender, EventArgs e)
+        {
+            loadData_Rooms();
+        }
+
+        private void btnTampilDataT_Click(object sender, EventArgs e)
+        {
+            loadData_Taxi();
+        }
+
+        private void btnTampilDataL_Click(object sender, EventArgs e)
+        {
+            loadData_Laundry();
+        }
+
+        private void btnPrintR_Click(object sender, EventArgs e)
+        {
+            invoice = new RichTextBox();
+            invoice.SelectAll();
+            invoice.SelectionFont = new Font("Verdana", 18, FontStyle.Regular);
+            invoice.Text += "Hotel Inn" + "\n";
+            invoice.Text += "=========================================================" + "\n";
+            invoice.Text += "ID Pemesan     : " + id + "\n";
+            invoice.Text += "Nama           : " + nama + "\n";
+            invoice.Text += "Alamat         : " + alamat + "\n";
+            invoice.Text += "Nomor telpon   : " + no_telp + "\n";
+            invoice.Text += "Jumlah orang   : " + jumorang + " orang" + "\n";
+            invoice.Text += "Jumlah hari    : " + jumhari + " hari" + "\n";
+            invoice.Text += "Jenis paket    : " + jenis_paket + "\n";
+            invoice.Text += "=========================================================" + "\n";
+            invoice.Text += "Harga reservasi    : Rp " + harga_restoran + "\n";
+            if (printDialog2.ShowDialog() == DialogResult.OK)
+            {
+                printDocument2.Print();
             }
         }
 
