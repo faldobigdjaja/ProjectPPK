@@ -264,6 +264,20 @@ namespace ProjectPPK
             }
         }
 
+        private void btnSimpan_Click(object sender, EventArgs e)
+        {
+            id = tbNomorIdentitasT.Text;
+            alamat_tujuan = tbAlamatTujuanT.Text;
+            no_telp = tbNomorPonselT.Text;
+            jumorang = Convert.ToInt32(nudJumlahOrangT.Value);
+            insertData_Taksi(id, alamat_tujuan, no_telp, jumorang);
+            lblHargaT.Text = " " + harga_taxi;
+            //melakukan reset
+            tbAlamatTujuanT.Text = "";
+            tbNomorPonselT.Text = "";
+            nudJumlahOrangT.Value = 0;
+        }
+
         private void btnSimpanL_Click(object sender, EventArgs e)
         {
             id = tbNomorIdentitasL.Text;
@@ -430,6 +444,27 @@ namespace ProjectPPK
                 MessageBox.Show(ex.Message,"Terjadi kesalahan",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
+        private void insertData_Taksi(string id,string alamat_tjn, string no_ponsel, int jum_org)
+        {
+            try
+            {
+                connect.Open();
+                MySqlCommand command = new MySqlCommand("INSERT INTO reservasi_taksi VALUES(@id,@alamat_tujuan,@nomor_ponsel,@jumlah_orang,@harga_taksi)", connect);
+                harga_taxi = hitungTaksi(jum_org);
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@alamat_tujuan", alamat_tjn);
+                command.Parameters.AddWithValue("@nomor_ponsel", no_ponsel);
+                command.Parameters.AddWithValue("@jumlah_orang", jum_org);
+                command.Parameters.AddWithValue("@harga_taksi", harga_taxi);
+                command.ExecuteNonQuery();
+                connect.Close();
+                MessageBox.Show("Data berhasil ditambahkan", "Menyimpan data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void insertData_Resto(string id, string nama, string alamat, string no_ponsel, int jum_orang
             , int jum_hari, string jenis_paket)
         {
@@ -495,6 +530,10 @@ namespace ProjectPPK
         private int hitungLaundry(int jumkg)
         {
             return jumkg * 25000;
+        }
+        private int hitungTaksi(int jum_org)
+        {
+            return jum_org * 12000;
         }
         private int hitungRestoran(int jumkmr, int jumhari, string jenis)
         {
