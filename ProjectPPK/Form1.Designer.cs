@@ -79,17 +79,14 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.tbReservasiRuangan = new System.Windows.Forms.TabPage();
-            this.tbReservasiTaksi = new System.Windows.Forms.TabPage();
-            this.tpLaundry = new System.Windows.Forms.TabPage();
-            this.lblHargaRu = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.tbKeperluanRu = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnPrintRu = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
+            this.lblHargaRu = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.btHapusDataRu = new System.Windows.Forms.Button();
             this.btTampilDataRu = new System.Windows.Forms.Button();
             this.btnSimpanRu = new System.Windows.Forms.Button();
@@ -105,11 +102,12 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.lblHargaT = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
+            this.tbReservasiTaksi = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnPrintT = new System.Windows.Forms.Button();
             this.label28 = new System.Windows.Forms.Label();
+            this.lblHargaT = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
             this.btnHapusDataT = new System.Windows.Forms.Button();
             this.btnTampilDataT = new System.Windows.Forms.Button();
             this.btnSimpan = new System.Windows.Forms.Button();
@@ -121,11 +119,12 @@
             this.tbNomorIdentitasT = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
+            this.tpLaundry = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnPrintL = new System.Windows.Forms.Button();
             this.label37 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
             this.btnHapusDataL = new System.Windows.Forms.Button();
             this.btnTampilDataL = new System.Windows.Forms.Button();
             this.btnSimpanL = new System.Windows.Forms.Button();
@@ -133,8 +132,9 @@
             this.nudJumlahkgL = new System.Windows.Forms.NumericUpDown();
             this.tbNomorIdentitasL = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.tbKeperluanRu = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog2 = new System.Windows.Forms.PrintDialog();
             this.printDocument2 = new System.Drawing.Printing.PrintDocument();
             this.tabControl1.SuspendLayout();
@@ -146,17 +146,17 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahHariR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahOrangR)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tbReservasiRuangan.SuspendLayout();
-            this.tbReservasiTaksi.SuspendLayout();
-            this.tpLaundry.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahHariRu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahOrangRu)).BeginInit();
+            this.tbReservasiTaksi.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahOrangT)).BeginInit();
+            this.tpLaundry.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahkgL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -745,23 +745,6 @@
             this.label14.TabIndex = 22;
             this.label14.Text = "Nama";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 562);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(876, 362);
-            this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // printDialog1
-            // 
-            this.printDialog1.Document = this.printDocument1;
-            this.printDialog1.UseEXDialog = true;
-            // 
             // tbReservasiRuangan
             // 
             this.tbReservasiRuangan.Controls.Add(this.label30);
@@ -789,64 +772,25 @@
             this.tbReservasiRuangan.Text = "Reservasi Ruangan";
             this.tbReservasiRuangan.UseVisualStyleBackColor = true;
             // 
-            // tbReservasiTaksi
+            // label30
             // 
-            this.tbReservasiTaksi.Controls.Add(this.panel4);
-            this.tbReservasiTaksi.Controls.Add(this.btnHapusDataT);
-            this.tbReservasiTaksi.Controls.Add(this.btnTampilDataT);
-            this.tbReservasiTaksi.Controls.Add(this.btnSimpan);
-            this.tbReservasiTaksi.Controls.Add(this.label29);
-            this.tbReservasiTaksi.Controls.Add(this.label31);
-            this.tbReservasiTaksi.Controls.Add(this.tbAlamatTujuanT);
-            this.tbReservasiTaksi.Controls.Add(this.tbNomorPonselT);
-            this.tbReservasiTaksi.Controls.Add(this.nudJumlahOrangT);
-            this.tbReservasiTaksi.Controls.Add(this.tbNomorIdentitasT);
-            this.tbReservasiTaksi.Controls.Add(this.label32);
-            this.tbReservasiTaksi.Controls.Add(this.label33);
-            this.tbReservasiTaksi.Location = new System.Drawing.Point(4, 29);
-            this.tbReservasiTaksi.Name = "tbReservasiTaksi";
-            this.tbReservasiTaksi.Size = new System.Drawing.Size(868, 529);
-            this.tbReservasiTaksi.TabIndex = 3;
-            this.tbReservasiTaksi.Text = "Reservasi Taksi";
-            this.tbReservasiTaksi.UseVisualStyleBackColor = true;
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(10, 354);
+            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(81, 20);
+            this.label30.TabIndex = 63;
+            this.label30.Text = "Keperluan";
+            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tpLaundry
+            // tbKeperluanRu
             // 
-            this.tpLaundry.Controls.Add(this.panel5);
-            this.tpLaundry.Controls.Add(this.btnHapusDataL);
-            this.tpLaundry.Controls.Add(this.btnTampilDataL);
-            this.tpLaundry.Controls.Add(this.btnSimpanL);
-            this.tpLaundry.Controls.Add(this.label39);
-            this.tpLaundry.Controls.Add(this.nudJumlahkgL);
-            this.tpLaundry.Controls.Add(this.tbNomorIdentitasL);
-            this.tpLaundry.Controls.Add(this.label42);
-            this.tpLaundry.Location = new System.Drawing.Point(4, 29);
-            this.tpLaundry.Name = "tpLaundry";
-            this.tpLaundry.Size = new System.Drawing.Size(868, 529);
-            this.tpLaundry.TabIndex = 4;
-            this.tpLaundry.Text = "Layanan Laundry";
-            this.tpLaundry.UseVisualStyleBackColor = true;
-            // 
-            // lblHargaRu
-            // 
-            this.lblHargaRu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHargaRu.Location = new System.Drawing.Point(178, 80);
-            this.lblHargaRu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblHargaRu.Name = "lblHargaRu";
-            this.lblHargaRu.Size = new System.Drawing.Size(202, 37);
-            this.lblHargaRu.TabIndex = 1;
-            this.lblHargaRu.Text = "0";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(22, 15);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(158, 32);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "Total Biaya";
+            this.tbKeperluanRu.Location = new System.Drawing.Point(149, 349);
+            this.tbKeperluanRu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tbKeperluanRu.Name = "tbKeperluanRu";
+            this.tbKeperluanRu.Size = new System.Drawing.Size(271, 26);
+            this.tbKeperluanRu.TabIndex = 62;
+            this.tbKeperluanRu.Text = "Enter Text";
             // 
             // panel3
             // 
@@ -885,6 +829,27 @@
             this.label19.TabIndex = 2;
             this.label19.Text = "Rp";
             // 
+            // lblHargaRu
+            // 
+            this.lblHargaRu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHargaRu.Location = new System.Drawing.Point(178, 80);
+            this.lblHargaRu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHargaRu.Name = "lblHargaRu";
+            this.lblHargaRu.Size = new System.Drawing.Size(202, 37);
+            this.lblHargaRu.TabIndex = 1;
+            this.lblHargaRu.Text = "0";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(22, 15);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(158, 32);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "Total Biaya";
+            // 
             // btHapusDataRu
             // 
             this.btHapusDataRu.Location = new System.Drawing.Point(299, 456);
@@ -894,6 +859,7 @@
             this.btHapusDataRu.TabIndex = 61;
             this.btHapusDataRu.Text = "Hapus data";
             this.btHapusDataRu.UseVisualStyleBackColor = true;
+            this.btHapusDataRu.Click += new System.EventHandler(this.btHapusDataRu_Click);
             // 
             // btTampilDataRu
             // 
@@ -1029,26 +995,26 @@
             this.label25.TabIndex = 46;
             this.label25.Text = "Nama";
             // 
-            // lblHargaT
+            // tbReservasiTaksi
             // 
-            this.lblHargaT.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHargaT.Location = new System.Drawing.Point(178, 80);
-            this.lblHargaT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblHargaT.Name = "lblHargaT";
-            this.lblHargaT.Size = new System.Drawing.Size(202, 37);
-            this.lblHargaT.TabIndex = 1;
-            this.lblHargaT.Text = "0";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(22, 15);
-            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(158, 32);
-            this.label27.TabIndex = 0;
-            this.label27.Text = "Total Biaya";
+            this.tbReservasiTaksi.Controls.Add(this.panel4);
+            this.tbReservasiTaksi.Controls.Add(this.btnHapusDataT);
+            this.tbReservasiTaksi.Controls.Add(this.btnTampilDataT);
+            this.tbReservasiTaksi.Controls.Add(this.btnSimpan);
+            this.tbReservasiTaksi.Controls.Add(this.label29);
+            this.tbReservasiTaksi.Controls.Add(this.label31);
+            this.tbReservasiTaksi.Controls.Add(this.tbAlamatTujuanT);
+            this.tbReservasiTaksi.Controls.Add(this.tbNomorPonselT);
+            this.tbReservasiTaksi.Controls.Add(this.nudJumlahOrangT);
+            this.tbReservasiTaksi.Controls.Add(this.tbNomorIdentitasT);
+            this.tbReservasiTaksi.Controls.Add(this.label32);
+            this.tbReservasiTaksi.Controls.Add(this.label33);
+            this.tbReservasiTaksi.Location = new System.Drawing.Point(4, 29);
+            this.tbReservasiTaksi.Name = "tbReservasiTaksi";
+            this.tbReservasiTaksi.Size = new System.Drawing.Size(868, 529);
+            this.tbReservasiTaksi.TabIndex = 3;
+            this.tbReservasiTaksi.Text = "Reservasi Taksi";
+            this.tbReservasiTaksi.UseVisualStyleBackColor = true;
             // 
             // panel4
             // 
@@ -1086,6 +1052,27 @@
             this.label28.Size = new System.Drawing.Size(51, 32);
             this.label28.TabIndex = 2;
             this.label28.Text = "Rp";
+            // 
+            // lblHargaT
+            // 
+            this.lblHargaT.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHargaT.Location = new System.Drawing.Point(178, 80);
+            this.lblHargaT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHargaT.Name = "lblHargaT";
+            this.lblHargaT.Size = new System.Drawing.Size(202, 37);
+            this.lblHargaT.TabIndex = 1;
+            this.lblHargaT.Text = "0";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(22, 15);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(158, 32);
+            this.label27.TabIndex = 0;
+            this.label27.Text = "Total Biaya";
             // 
             // btnHapusDataT
             // 
@@ -1194,26 +1181,22 @@
             this.label33.TabIndex = 48;
             this.label33.Text = "Nomor Identitas";
             // 
-            // label35
+            // tpLaundry
             // 
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.Location = new System.Drawing.Point(178, 80);
-            this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(202, 37);
-            this.label35.TabIndex = 1;
-            this.label35.Text = "0";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(22, 15);
-            this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(158, 32);
-            this.label36.TabIndex = 0;
-            this.label36.Text = "Total Biaya";
+            this.tpLaundry.Controls.Add(this.panel5);
+            this.tpLaundry.Controls.Add(this.btnHapusDataL);
+            this.tpLaundry.Controls.Add(this.btnTampilDataL);
+            this.tpLaundry.Controls.Add(this.btnSimpanL);
+            this.tpLaundry.Controls.Add(this.label39);
+            this.tpLaundry.Controls.Add(this.nudJumlahkgL);
+            this.tpLaundry.Controls.Add(this.tbNomorIdentitasL);
+            this.tpLaundry.Controls.Add(this.label42);
+            this.tpLaundry.Location = new System.Drawing.Point(4, 29);
+            this.tpLaundry.Name = "tpLaundry";
+            this.tpLaundry.Size = new System.Drawing.Size(868, 529);
+            this.tpLaundry.TabIndex = 4;
+            this.tpLaundry.Text = "Layanan Laundry";
+            this.tpLaundry.UseVisualStyleBackColor = true;
             // 
             // panel5
             // 
@@ -1251,6 +1234,27 @@
             this.label37.Size = new System.Drawing.Size(51, 32);
             this.label37.TabIndex = 2;
             this.label37.Text = "Rp";
+            // 
+            // label35
+            // 
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Location = new System.Drawing.Point(178, 80);
+            this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(202, 37);
+            this.label35.TabIndex = 1;
+            this.label35.Text = "0";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(22, 15);
+            this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(158, 32);
+            this.label36.TabIndex = 0;
+            this.label36.Text = "Total Biaya";
             // 
             // btnHapusDataL
             // 
@@ -1320,25 +1324,22 @@
             this.label42.TabIndex = 48;
             this.label42.Text = "Nomor Identitas";
             // 
-            // label30
+            // dataGridView1
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(10, 354);
-            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(81, 20);
-            this.label30.TabIndex = 63;
-            this.label30.Text = "Keperluan";
-            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 562);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(876, 362);
+            this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // tbKeperluanRu
+            // printDialog1
             // 
-            this.tbKeperluanRu.Location = new System.Drawing.Point(149, 349);
-            this.tbKeperluanRu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tbKeperluanRu.Name = "tbKeperluanRu";
-            this.tbKeperluanRu.Size = new System.Drawing.Size(271, 26);
-            this.tbKeperluanRu.TabIndex = 62;
-            this.tbKeperluanRu.Text = "Enter Text";
+            this.printDialog1.Document = this.printDocument1;
+            this.printDialog1.UseEXDialog = true;
             // 
             // printDialog2
             // 
@@ -1370,23 +1371,23 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahHariR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahOrangR)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tbReservasiRuangan.ResumeLayout(false);
             this.tbReservasiRuangan.PerformLayout();
-            this.tbReservasiTaksi.ResumeLayout(false);
-            this.tbReservasiTaksi.PerformLayout();
-            this.tpLaundry.ResumeLayout(false);
-            this.tpLaundry.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahHariRu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahOrangRu)).EndInit();
+            this.tbReservasiTaksi.ResumeLayout(false);
+            this.tbReservasiTaksi.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahOrangT)).EndInit();
+            this.tpLaundry.ResumeLayout(false);
+            this.tpLaundry.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahkgL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }

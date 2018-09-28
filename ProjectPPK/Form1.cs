@@ -207,6 +207,25 @@ namespace ProjectPPK
             loadData_Rooms();
         }
 
+        private void btHapusDataRu_Click(object sender, EventArgs e)
+        {
+            id = tbNomorIdentitasRu.Text;
+            try
+            {
+                connect.Open();
+                MySqlCommand command = new MySqlCommand("DELETE FROM reservasi_ruangan WHERE no_id = @id", connect);
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Data berhasil dihapus", "Menghapus data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                connect.Close();
+                loadData_Rooms();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnTampilDataT_Click(object sender, EventArgs e)
         {
             loadData_Taxi();
