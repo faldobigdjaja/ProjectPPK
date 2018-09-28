@@ -303,8 +303,14 @@ namespace ProjectPPK
             jumorang = Convert.ToInt32(nudJumlahOrangRu.Value);
             jumhari = Convert.ToInt32(nudJumlahHariRu.Value);
             keperluan = tbKeperluanRu.Text;
-            //TODO : membuat method untuk memasukkan data ke dalam tabel reservasi_ruangan
+            insertData_Ruangan(id, nama, alamat, no_telp, jumorang, jumhari, keperluan);
             //mengosongkan form
+            tbNamaRu.Text = "";
+            tbNomorPonselRu.Text = "";
+            tbAlamatRu.Text = "";
+            nudJumlahOrangRu.Value = 0;
+            nudJumlahHariRu.Value = 0;
+            tbKeperluanRu.Text = "";
         }
 
         private void btnTampilDataL_Click(object sender, EventArgs e)
@@ -495,6 +501,31 @@ namespace ProjectPPK
                 command.Parameters.AddWithValue("@jumlah_hari", jum_hari);
                 command.Parameters.AddWithValue("@jenis_paket", jenis_paket);
                 command.Parameters.AddWithValue("@harga_restoran", harga_restoran);
+                command.ExecuteNonQuery();
+                connect.Close();
+                MessageBox.Show("Data berhasil ditambahkan", "Menyimpan data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void insertData_Ruangan(string id, string nama, string alamat, string no_ponsel, int jum_orang
+            , int jum_hari, string keperluan)
+        {
+            try
+            {
+                connect.Open();
+                MySqlCommand command = new MySqlCommand("INSERT INTO reservasi_ruangan VALUES(@nama,@id,@alamat,@nomor_ponsel,@jumlah_orang,@jumlah_hari,@keperluan,@harga)", connect);
+                harga_ruangan = hitungRuangan(jum_orang, jum_hari);
+                command.Parameters.AddWithValue("@nama", nama);
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@alamat", alamat);
+                command.Parameters.AddWithValue("@nomor_ponsel", no_ponsel);
+                command.Parameters.AddWithValue("@jumlah_orang", jum_orang);
+                command.Parameters.AddWithValue("@jumlah_hari", jum_hari);
+                command.Parameters.AddWithValue("@keperluan", keperluan);
+                command.Parameters.AddWithValue("@harga", harga_ruangan);
                 command.ExecuteNonQuery();
                 connect.Close();
                 MessageBox.Show("Data berhasil ditambahkan", "Menyimpan data", MessageBoxButtons.OK, MessageBoxIcon.Information);
