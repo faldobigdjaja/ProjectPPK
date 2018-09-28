@@ -133,11 +133,12 @@ namespace ProjectPPK
                 e.Cancel = true;
             }
         }
+        //Tombol tampil data digunakan untuk menampilkan data dari tabel reservasi_kamar
         private void button1_Click(object sender, EventArgs e)
         {
             loadData_Room();
         }
-
+        //Tombol print berfungsi untuk mencetak dokumen invoice
         private void btnPrintK_Click(object sender, EventArgs e)
         {
             invoice = new RichTextBox();
@@ -178,7 +179,7 @@ namespace ProjectPPK
                     break;
             }
         }
-
+        //Tombol tampil data digunakan untuk menampilkan data dari tabel reservasi_restoran
         private void bTampildataR_Click(object sender, EventArgs e)
         {
             loadData_Restaurant();
@@ -202,7 +203,7 @@ namespace ProjectPPK
                 MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        //Tombol tampil data digunakan untuk menampilkan data dari tabel reservasi_ruangan
         private void btTampilDataRu_Click(object sender, EventArgs e)
         {
             loadData_Rooms();
@@ -264,7 +265,11 @@ namespace ProjectPPK
                 MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        /**
+         * Tombol simpan berfungsi untuk menyimpan data hasil inputan pengguna
+         * ke dalam database dengan menggunakan method insertData(). method ini
+         * berisi query untuk memasukkan data.
+         * **/
         private void btnSimpan_Click(object sender, EventArgs e)
         {
             id = tbNomorIdentitasT.Text;
@@ -278,7 +283,11 @@ namespace ProjectPPK
             tbNomorPonselT.Text = "";
             nudJumlahOrangT.Value = 0;
         }
-
+        /**
+         * Tombol simpan berfungsi untuk menyimpan data hasil inputan pengguna
+         * ke dalam database dengan menggunakan method insertData(). method ini
+         * berisi query untuk memasukkan data.
+         * **/
         private void btnSimpanL_Click(object sender, EventArgs e)
         {
             id = tbNomorIdentitasL.Text;
@@ -288,12 +297,16 @@ namespace ProjectPPK
             //melakukan reset / mengosongkan form
             nudJumlahkgL.Value = 0;
         }
-
+        //Tombol tampil data digunakan untuk menampilkan data dari tabel reservasi_taksi
         private void btnTampilDataT_Click(object sender, EventArgs e)
         {
             loadData_Taxi();
         }
-
+        /**
+         * Tombol simpan berfungsi untuk menyimpan data hasil inputan pengguna
+         * ke dalam database dengan menggunakan method insertData(). method ini
+         * berisi query untuk memasukkan data.
+         * **/
         private void btnSimpanRu_Click(object sender, EventArgs e)
         {
             nama = tbNamaRu.Text;
@@ -312,7 +325,7 @@ namespace ProjectPPK
             nudJumlahHariRu.Value = 0;
             tbKeperluanRu.Text = "";
         }
-
+        //Tombol tampil data digunakan untuk menampilkan data dari tabel laundry
         private void btnTampilDataL_Click(object sender, EventArgs e)
         {
             loadData_Laundry();
@@ -339,7 +352,11 @@ namespace ProjectPPK
                 printDocument2.Print();
             }
         }
-
+        /**
+         * Tombol simpan berfungsi untuk menyimpan data hasil inputan pengguna
+         * ke dalam database dengan menggunakan method insertData(). method ini
+         * berisi query untuk memasukkan data.
+         * **/
         private void btnSaveR_Click(object sender, EventArgs e)
         {
             nama = tbNamaR.Text;
@@ -357,7 +374,7 @@ namespace ProjectPPK
             nudJumlahOrangR.Value = 0;
             nudJumlahHariR.Value = 0;
         }
-
+        //tombol Check Out digunakan untuk menghapus data pada tabel reservasi_kamar
         private void btnCheckOutK_Click(object sender, EventArgs e)
         {
             try
@@ -403,7 +420,11 @@ namespace ProjectPPK
 
             }
         }
-
+        /**
+         * Tombol simpan berfungsi untuk menyimpan data hasil inputan pengguna
+         * ke dalam database dengan menggunakan method insertData(). method ini
+         * berisi query untuk memasukkan data.
+         * **/
         private void btnSaveK_Click(object sender, EventArgs e)
         {
             id = tbNomorIdentitasK.Text;
