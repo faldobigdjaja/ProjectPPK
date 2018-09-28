@@ -123,7 +123,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnPrintL = new System.Windows.Forms.Button();
             this.label37 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
+            this.lblHargaL = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.btnHapusDataL = new System.Windows.Forms.Button();
             this.btnTampilDataL = new System.Windows.Forms.Button();
@@ -1083,6 +1083,7 @@
             this.btnHapusDataT.TabIndex = 61;
             this.btnHapusDataT.Text = "Hapus data";
             this.btnHapusDataT.UseVisualStyleBackColor = true;
+            this.btnHapusDataT.Click += new System.EventHandler(this.btnHapusDataT_Click);
             // 
             // btnTampilDataT
             // 
@@ -1204,7 +1205,7 @@
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel5.Controls.Add(this.btnPrintL);
             this.panel5.Controls.Add(this.label37);
-            this.panel5.Controls.Add(this.label35);
+            this.panel5.Controls.Add(this.lblHargaL);
             this.panel5.Controls.Add(this.label36);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel5.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -1235,15 +1236,15 @@
             this.label37.TabIndex = 2;
             this.label37.Text = "Rp";
             // 
-            // label35
+            // lblHargaL
             // 
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.Location = new System.Drawing.Point(178, 80);
-            this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(202, 37);
-            this.label35.TabIndex = 1;
-            this.label35.Text = "0";
+            this.lblHargaL.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHargaL.Location = new System.Drawing.Point(178, 80);
+            this.lblHargaL.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHargaL.Name = "lblHargaL";
+            this.lblHargaL.Size = new System.Drawing.Size(202, 37);
+            this.lblHargaL.TabIndex = 1;
+            this.lblHargaL.Text = "0";
             // 
             // label36
             // 
@@ -1265,6 +1266,7 @@
             this.btnHapusDataL.TabIndex = 61;
             this.btnHapusDataL.Text = "Hapus data";
             this.btnHapusDataL.UseVisualStyleBackColor = true;
+            this.btnHapusDataL.Click += new System.EventHandler(this.btnHapusDataL_Click);
             // 
             // btnTampilDataL
             // 
@@ -1286,6 +1288,7 @@
             this.btnSimpanL.TabIndex = 47;
             this.btnSimpanL.Text = "Simpan";
             this.btnSimpanL.UseVisualStyleBackColor = true;
+            this.btnSimpanL.Click += new System.EventHandler(this.btnSimpanL_Click);
             // 
             // label39
             // 
@@ -1490,7 +1493,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btnPrintL;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label lblHargaL;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Button btnHapusDataL;
         private System.Windows.Forms.Button btnTampilDataL;

@@ -14,7 +14,7 @@ namespace ProjectPPK
     {
         MySqlDataAdapter mySqlDataAdapter;
         private string id,nama, alamat, no_telp, jenis_kamar,jenis_paket,keperluan,alamat_tujuan;
-        private int jumkamar, jumhari,harga_kamar,jumorang,harga_restoran,jumlah_laundry;
+        private int jumkamar, jumhari,harga_kamar,jumorang,harga_restoran,jumlah_laundry,harga_ruangan,harga_taxi,harga_laundry;
         private RichTextBox invoice;
         static string connectionInfo = "datasource=localhost;port=3306;username=root;password=katasandi;database=hotel;SslMode=none";
         MySqlConnection connect = new MySqlConnection(connectionInfo);
@@ -226,6 +226,54 @@ namespace ProjectPPK
             }
         }
 
+        private void btnHapusDataT_Click(object sender, EventArgs e)
+        {
+            id = tbNomorIdentitasT.Text;
+            try
+            {
+                connect.Open();
+                MySqlCommand command = new MySqlCommand("DELETE FROM reservasi_taksi WHERE no_id = @id", connect);
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Data berhasil dihapus", "Menghapus data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                connect.Close();
+                loadData_Taxi();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnHapusDataL_Click(object sender, EventArgs e)
+        {
+            id = tbNomorIdentitasL.Text;
+            try
+            {
+                connect.Open();
+                MySqlCommand command = new MySqlCommand("DELETE FROM laundry WHERE no_id = @id", connect);
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Data berhasil dihapus", "Menghapus data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                connect.Close();
+                loadData_Laundry();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSimpanL_Click(object sender, EventArgs e)
+        {
+            id = tbNomorIdentitasL.Text;
+            jumlah_laundry = Convert.ToInt32(nudJumlahkgL.Value);
+            insertData_Laundry(id, jumlah_laundry);
+            lblHargaL.Text = "" + harga_laundry;
+            //melakukan reset / mengosongkan form
+            nudJumlahkgL.Value = 0;
+        }
+
         private void btnTampilDataT_Click(object sender, EventArgs e)
         {
             loadData_Taxi();
@@ -407,6 +455,25 @@ namespace ProjectPPK
                 MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void insertData_Laundry(string id, int jum_kg)
+        {
+            try
+            {
+                connect.Open();
+                MySqlCommand command = new MySqlCommand("INSERT INTO laundry VALUES(@id,@jumlah_kg,@harga)", connect);
+                harga_laundry = hitungLaundry(jum_kg);
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@jumlah_kg", jum_kg);
+                command.Parameters.AddWithValue("@harga", harga_laundry);
+                command.ExecuteNonQuery();
+                connect.Close();
+                MessageBox.Show("Data berhasil ditambahkan", "Menyimpan data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private int hitungKamar(int jumkmr, int jumhari, string jenis)
         {
             int harga = 0;
@@ -424,6 +491,10 @@ namespace ProjectPPK
                     break;
             }
             return harga;
+        }
+        private int hitungLaundry(int jumkg)
+        {
+            return jumkg * 25000;
         }
         private int hitungRestoran(int jumkmr, int jumhari, string jenis)
         {
