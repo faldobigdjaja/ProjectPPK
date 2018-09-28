@@ -13,8 +13,8 @@ namespace ProjectPPK
     public partial class formReservasi : Form
     {
         MySqlDataAdapter mySqlDataAdapter;
-        private string id,nama, alamat, no_telp, jenis_kamar,jenis_paket;
-        private int jumkamar, jumhari,harga_kamar,jumorang,harga_restoran;
+        private string id,nama, alamat, no_telp, jenis_kamar,jenis_paket,keperluan,alamat_tujuan;
+        private int jumkamar, jumhari,harga_kamar,jumorang,harga_restoran,jumlah_laundry;
         private RichTextBox invoice;
         static string connectionInfo = "datasource=localhost;port=3306;username=root;password=katasandi;database=hotel;SslMode=none";
         MySqlConnection connect = new MySqlConnection(connectionInfo);
