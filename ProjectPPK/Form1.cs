@@ -24,8 +24,18 @@ namespace ProjectPPK
             InitializeComponent();
             printDocument1.BeginPrint += beginPrint;
             printDocument1.PrintPage += printPage;
+
             printDocument2.BeginPrint += beginPrint;
             printDocument2.PrintPage += printPage;
+
+            printDocument3.BeginPrint += beginPrint;
+            printDocument3.PrintPage += printPage;
+
+            printDocument4.BeginPrint += beginPrint;
+            printDocument4.PrintPage += printPage;
+
+            printDocument5.BeginPrint += beginPrint;
+            printDocument5.PrintPage += printPage;
         }
         private void formReservasi_Load(object sender, EventArgs e)
         {
@@ -145,6 +155,7 @@ namespace ProjectPPK
             invoice.SelectAll();
             invoice.SelectionFont = new Font("Verdana",18, FontStyle.Regular);
             invoice.Text += "Hotel Inn" + "\n";
+            invoice.Text += "Invoice reservasi kamar " + "\n";
             invoice.Text += "=========================================================" + "\n";
             invoice.Text += "ID Tamu        : " + id + "\n";
             invoice.Text += "Nama           : " + nama + "\n";
@@ -337,6 +348,7 @@ namespace ProjectPPK
             invoice.SelectAll();
             invoice.SelectionFont = new Font("Verdana", 18, FontStyle.Regular);
             invoice.Text += "Hotel Inn" + "\n";
+            invoice.Text += "Invoice reservasi restoran " + "\n";
             invoice.Text += "=========================================================" + "\n";
             invoice.Text += "ID Pemesan     : " + id + "\n";
             invoice.Text += "Nama           : " + nama + "\n";
@@ -352,11 +364,73 @@ namespace ProjectPPK
                 printDocument2.Print();
             }
         }
+
+        private void btnPrintRu_Click(object sender, EventArgs e)
+        {
+            invoice = new RichTextBox();
+            invoice.SelectAll();
+            invoice.SelectionFont = new Font("Verdana", 18, FontStyle.Regular);
+            invoice.Text += "Hotel Inn" + "\n";
+            invoice.Text += "Invoice reservasi ruangan " + "\n";
+            invoice.Text += "=========================================================" + "\n";
+            invoice.Text += "ID Pemesan     : " + id + "\n";
+            invoice.Text += "Nama           : " + nama + "\n";
+            invoice.Text += "Alamat         : " + alamat + "\n";
+            invoice.Text += "Nomor telpon   : " + no_telp + "\n";
+            invoice.Text += "Jumlah orang   : " + jumorang + " orang" + "\n";
+            invoice.Text += "Jumlah hari    : " + jumhari + " hari" + "\n";
+            invoice.Text += "Keperluan      : " + keperluan + "\n";
+            invoice.Text += "=========================================================" + "\n";
+            invoice.Text += "Harga reservasi    : Rp " + harga_ruangan + "\n";
+            if (printDialog3.ShowDialog() == DialogResult.OK)
+            {
+                printDocument3.Print();
+            }
+        }
+
+        private void btnPrintT_Click(object sender, EventArgs e)
+        {
+            invoice = new RichTextBox();
+            invoice.SelectAll();
+            invoice.SelectionFont = new Font("Verdana", 18, FontStyle.Regular);
+            invoice.Text += "Hotel Inn" + "\n";
+            invoice.Text += "Invoice reservasi taksi " + "\n";
+            invoice.Text += "=========================================================" + "\n";
+            invoice.Text += "ID Pemesan     : " + id + "\n";
+            invoice.Text += "Alamat tujuan  : " + alamat_tujuan + "\n";
+            invoice.Text += "Nomor telpon   : " + no_telp + "\n";
+            invoice.Text += "Jumlah orang   : " + jumorang + " orang" + "\n";
+            invoice.Text += "=========================================================" + "\n";
+            invoice.Text += "Harga reservasi    : Rp " + harga_taxi + "\n";
+            if (printDialog4.ShowDialog() == DialogResult.OK)
+            {
+                printDocument4.Print();
+            }
+        }
+
+        private void btnPrintL_Click(object sender, EventArgs e)
+        {
+            invoice = new RichTextBox();
+            invoice.SelectAll();
+            invoice.SelectionFont = new Font("Verdana", 18, FontStyle.Regular);
+            invoice.Text += "Hotel Inn" + "\n";
+            invoice.Text += "Invoice laundry hotel " + "\n";
+            invoice.Text += "=========================================================" + "\n";
+            invoice.Text += "ID Pemesan             : " + id + "\n";
+            invoice.Text += "Jumlah laundry (kg)    : " + jumlah_laundry + " kg" + "\n";
+            invoice.Text += "=========================================================" + "\n";
+            invoice.Text += "Harga laundry    : Rp " + harga_laundry + "\n";
+            if (printDialog5.ShowDialog() == DialogResult.OK)
+            {
+                printDocument5.Print();
+            }
+        }
+
         /**
-         * Tombol simpan berfungsi untuk menyimpan data hasil inputan pengguna
-         * ke dalam database dengan menggunakan method insertData(). method ini
-         * berisi query untuk memasukkan data.
-         * **/
+* Tombol simpan berfungsi untuk menyimpan data hasil inputan pengguna
+* ke dalam database dengan menggunakan method insertData(). method ini
+* berisi query untuk memasukkan data.
+* **/
         private void btnSaveR_Click(object sender, EventArgs e)
         {
             nama = tbNamaR.Text;

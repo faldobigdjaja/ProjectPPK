@@ -137,6 +137,12 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog2 = new System.Windows.Forms.PrintDialog();
             this.printDocument2 = new System.Drawing.Printing.PrintDocument();
+            this.printDialog3 = new System.Windows.Forms.PrintDialog();
+            this.printDocument3 = new System.Drawing.Printing.PrintDocument();
+            this.printDialog4 = new System.Windows.Forms.PrintDialog();
+            this.printDocument4 = new System.Drawing.Printing.PrintDocument();
+            this.printDialog5 = new System.Windows.Forms.PrintDialog();
+            this.printDocument5 = new System.Drawing.Printing.PrintDocument();
             this.tabControl1.SuspendLayout();
             this.tpReservasiKamar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudJumlahHariK)).BeginInit();
@@ -817,6 +823,7 @@
             this.btnPrintRu.TabIndex = 3;
             this.btnPrintRu.Text = "Print";
             this.btnPrintRu.UseVisualStyleBackColor = true;
+            this.btnPrintRu.Click += new System.EventHandler(this.btnPrintRu_Click);
             // 
             // label19
             // 
@@ -1042,6 +1049,7 @@
             this.btnPrintT.TabIndex = 3;
             this.btnPrintT.Text = "Print";
             this.btnPrintT.UseVisualStyleBackColor = true;
+            this.btnPrintT.Click += new System.EventHandler(this.btnPrintT_Click);
             // 
             // label28
             // 
@@ -1226,6 +1234,7 @@
             this.btnPrintL.TabIndex = 3;
             this.btnPrintL.Text = "Print";
             this.btnPrintL.UseVisualStyleBackColor = true;
+            this.btnPrintL.Click += new System.EventHandler(this.btnPrintL_Click);
             // 
             // label37
             // 
@@ -1350,6 +1359,21 @@
             // 
             this.printDialog2.Document = this.printDocument2;
             this.printDialog2.UseEXDialog = true;
+            // 
+            // printDialog3
+            // 
+            this.printDialog3.Document = this.printDocument3;
+            this.printDialog3.UseEXDialog = true;
+            // 
+            // printDialog4
+            // 
+            this.printDialog4.Document = this.printDocument4;
+            this.printDialog4.UseEXDialog = true;
+            // 
+            // printDialog5
+            // 
+            this.printDialog5.Document = this.printDocument5;
+            this.printDialog5.UseEXDialog = true;
             // 
             // formReservasi
             // 
@@ -1508,6 +1532,12 @@
         private System.Windows.Forms.TextBox tbKeperluanRu;
         private System.Windows.Forms.PrintDialog printDialog2;
         private System.Drawing.Printing.PrintDocument printDocument2;
+        private System.Windows.Forms.PrintDialog printDialog3;
+        private System.Drawing.Printing.PrintDocument printDocument3;
+        private System.Windows.Forms.PrintDialog printDialog4;
+        private System.Drawing.Printing.PrintDocument printDocument4;
+        private System.Windows.Forms.PrintDialog printDialog5;
+        private System.Drawing.Printing.PrintDocument printDocument5;
     }
 }
 
