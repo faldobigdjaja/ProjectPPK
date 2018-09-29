@@ -219,7 +219,7 @@ namespace ProjectPPK
         {
             loadData_Rooms();
         }
-
+        //Tombol hapus data untuk menghapus data
         private void btHapusDataRu_Click(object sender, EventArgs e)
         {
             id = tbNomorIdentitasRu.Text;
@@ -238,7 +238,7 @@ namespace ProjectPPK
                 MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        //tombol hapus data untuk menghapus data
         private void btnHapusDataT_Click(object sender, EventArgs e)
         {
             id = tbNomorIdentitasT.Text;
@@ -257,7 +257,7 @@ namespace ProjectPPK
                 MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        //Tombol hapus data untuk menghapus data
         private void btnHapusDataL_Click(object sender, EventArgs e)
         {
             id = tbNomorIdentitasL.Text;
@@ -341,7 +341,7 @@ namespace ProjectPPK
         {
             loadData_Laundry();
         }
-
+        //tombol print untuk mencetak invoice reservasi restoran
         private void btnPrintR_Click(object sender, EventArgs e)
         {
             invoice = new RichTextBox();
@@ -364,7 +364,7 @@ namespace ProjectPPK
                 printDocument2.Print();
             }
         }
-
+        //tombol print untuk mencetak invoice reservasi ruangan
         private void btnPrintRu_Click(object sender, EventArgs e)
         {
             invoice = new RichTextBox();
@@ -387,7 +387,7 @@ namespace ProjectPPK
                 printDocument3.Print();
             }
         }
-
+        //tombol print untuk mencetak invoice reservasi taksi
         private void btnPrintT_Click(object sender, EventArgs e)
         {
             invoice = new RichTextBox();
@@ -407,7 +407,7 @@ namespace ProjectPPK
                 printDocument4.Print();
             }
         }
-
+        //tombol print untuk mencetak invoice laundry hotel
         private void btnPrintL_Click(object sender, EventArgs e)
         {
             invoice = new RichTextBox();
@@ -649,6 +649,7 @@ namespace ProjectPPK
                 MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //fungsi untuk menghitung harga kamar
         private int hitungKamar(int jumkmr, int jumhari, string jenis)
         {
             int harga = 0;
@@ -667,18 +668,22 @@ namespace ProjectPPK
             }
             return harga;
         }
+        //fungsi untuk menghitung harga laundry 
         private int hitungLaundry(int jumkg)
         {
             return jumkg * 25000;
         }
+        //fungsi untuk menghitung harga biaya taksi
         private int hitungTaksi(int jum_org)
         {
             return jum_org * 12000;
         }
+        //fungsi untuk menghitung harga ruangan
         private int hitungRuangan(int jum_org, int jum_hari)
         {
             return (jum_org * 25000) * jum_hari;
         }
+        //fungsi untuk menghitung harga restoran
         private int hitungRestoran(int jumkmr, int jumhari, string jenis)
         {
             int harga = 0;
