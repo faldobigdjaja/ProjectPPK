@@ -37,10 +37,6 @@ namespace ProjectPPK
             printDocument5.BeginPrint += beginPrint;
             printDocument5.PrintPage += printPage;
         }
-        private void formReservasi_Load(object sender, EventArgs e)
-        {
-            loadData_Room();
-        }
         private void loadData_Room()
         {
             string query = "SELECT * FROM reservasi_kamar";
@@ -557,6 +553,7 @@ namespace ProjectPPK
             } catch(Exception ex)
             {
                 MessageBox.Show(ex.Message,"Terjadi kesalahan",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                connect.Close();
             }
         }
         private void insertData_Taksi(string id,string alamat_tjn, string no_ponsel, int jum_org)
@@ -603,6 +600,7 @@ namespace ProjectPPK
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                connect.Close();
             }
         }
         private void insertData_Ruangan(string id, string nama, string alamat, string no_ponsel, int jum_orang
@@ -647,6 +645,7 @@ namespace ProjectPPK
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Terjadi kesalahan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                connect.Close();
             }
         }
         //fungsi untuk menghitung harga kamar

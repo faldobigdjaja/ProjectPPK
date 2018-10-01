@@ -1386,7 +1386,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "formReservasi";
             this.Text = "Hotel Inn";
-            this.Load += new System.EventHandler(this.formReservasi_Load);
             this.tabControl1.ResumeLayout(false);
             this.tpReservasiKamar.ResumeLayout(false);
             this.tpReservasiKamar.PerformLayout();
