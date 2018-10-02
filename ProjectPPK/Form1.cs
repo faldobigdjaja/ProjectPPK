@@ -325,6 +325,7 @@ namespace ProjectPPK
             keperluan = tbKeperluanRu.Text;
             insertData_Ruangan(id, nama, alamat, no_telp, jumorang, jumhari, keperluan);
             //mengosongkan form
+            lblHargaRu.Text = Convert.ToString(harga_ruangan);
             tbNamaRu.Text = "";
             tbNomorPonselRu.Text = "";
             tbAlamatRu.Text = "";
